@@ -10,6 +10,7 @@ namespace Common.Api.Dtos
         [Required]
         public string Username { get; set; }
         [Required]
+        [StringLength(20, MinimumLength = 4, ErrorMessage = "Must be at least 4 characters long.")]
         public string Password { get; set; }
     }
 }

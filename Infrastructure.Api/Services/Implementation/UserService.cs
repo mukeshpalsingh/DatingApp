@@ -21,7 +21,7 @@ namespace Infrastructure.Api.Services.Implementation
         public async Task<User> Login(string UserName, string password)
         {
             var user = await _userRepository.Find(m => m.Username == UserName);
-            if (user == null)
+            if (user.Count() == 0)
                 return null;
             var UserInfo = user.FirstOrDefault();
             if (!CommonHelper.VerifyPasswordHash(password, UserInfo.PasswordHash, UserInfo.PasswordSalt))
